@@ -1,5 +1,5 @@
 module Matrext
-  CHAR_POOL = [*("A".."Z"), *("0".."9")]
+  CHAR_POOL = (33..126).map{ |i| i.chr }
   
   def self.matrextify(phrase)
     letters = phrase
