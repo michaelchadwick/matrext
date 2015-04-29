@@ -2,5 +2,9 @@
 require_relative "matrext/string_manip"
 
 module Matrext
-  # Your code goes here...
+  class Base
+    def initialize(phrase)
+      Matrext::matrextify(phrase)
+    end
+  end
 end

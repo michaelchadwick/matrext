@@ -42,7 +42,7 @@ begin
 
   phrase = ARGV[0]
   
-  Matrext::matrextify(phrase)
+  Matrext::Base.new(phrase)
 rescue => error
   print_error(error)
   exit(false)
