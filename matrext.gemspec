@@ -12,7 +12,6 @@ Gem::Specification.new do |spec|
   spec.homepage        = 'http://rubygems.org/gems/matrext'
   spec.summary         = 'Make text phrases look like they\'re being decoded, Matrix-style'
   spec.description     = 'Matrext takes a string input and then prints it back to the console, one letter at a time after "searching" through character noise, as if it was decoding the string itself.'
-  spec.license         = "MIT"
 
   spec.files           = `git ls-files`.split("\n")
   spec.test_files      = `git ls-files -- {test,spec,features}/*`.split("\n")
