@@ -1,6 +1,6 @@
 # Matrext
 
-Simple console application that takes a phrase and writes it back to the screen, one letter a time, as if each character was being "decoded", Matrix-style.
+Simple Ruby gem that takes a phrase and writes it back to the screen, one letter a time, as if each character was being "decoded", Matrix-style.
 
 ## Installation
 
