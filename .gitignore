@@ -8,3 +8,6 @@
 /spec/reports/
 /tmp/
 *.gem
+.bundle
+.idea/*
+pkg/*
