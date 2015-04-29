@@ -20,4 +20,4 @@ Or install it yourself as:
 
 ## Usage
 
-`matrext "hello world"
+`matrext "hello world"`
