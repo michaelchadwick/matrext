@@ -5,7 +5,7 @@ require_relative '../lib/matrext'
 require_relative '../lib/matrext/version'
 
 def parse_options
-  options = {:phrase => 'hello world'}
+  options = {}
 
   optparse = OptionParser.new do |opts|
     opts.banner = 'usage: matrext "phrase"'
@@ -21,7 +21,6 @@ def parse_options
     end
   end
 
-  options[:usage] = optparse.to_s
   optparse.parse!()
 
   return options
@@ -40,9 +39,12 @@ end
 begin
   options = parse_options
 
-  phrase = ARGV[0]
-  
-  Matrext::Base.new(phrase)
+  if (ARGV.count > 0)
+    phrase = ARGV[0]
+    Matrext::Base.new(phrase)
+  else
+    puts "#{$PROGRAM_NAME} error: missing phrase"
+  end
 rescue => error
   print_error(error)
   exit(false)

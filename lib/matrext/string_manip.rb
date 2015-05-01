@@ -16,5 +16,6 @@ module Matrext
       print l.upcase
       sleep(letter_delay)
     end
+    puts
   end
 end
