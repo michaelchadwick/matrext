@@ -1,8 +1,11 @@
+# lib/matrext/core.rb
+# The core processing unit
+
 module Matrext
   CHAR_POOL = (33..126).map{ |i| i.chr }
   
-  def self.matrextify(phrase)
-    letters = phrase
+  def self.process(options)
+    letters = options[:phrase]
 
     letters.each_char do |l|
       letter_noise = rand(1..10)
@@ -16,6 +19,9 @@ module Matrext
       print l.upcase
       sleep(letter_delay)
     end
-    puts
+
+    if options[:sl].equal? false
+      puts
+    end
   end
 end

@@ -1,10 +1,12 @@
 # lib/matrext.rb
-require_relative "matrext/string_manip"
+# Main jumping off point
+
+require_relative "matrext/core"
 
 module Matrext
   class Base
-    def initialize(phrase)
-      Matrext::matrextify(phrase)
+    def initialize(options)
+      Matrext::process(options)
     end
   end
 end
