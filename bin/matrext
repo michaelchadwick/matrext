@@ -5,13 +5,21 @@ require_relative '../lib/matrext'
 require_relative '../lib/matrext/version'
 
 def parse_options
-  options = {:sl => false}
+  options = {:speed => nil, :oneline => false}
 
   optparse = OptionParser.new do |opts|
-    opts.banner = 'usage: matrext "phrase"'
+    opts.banner = 'usage: matrext "phrase" [-q] [-s] [-o]'
 
-    opts.on('-sl', '--sameline', 'Display text on the same line') do |sl|
-      options[:sl] = true
+    opts.on('-q', 'Do it quickly') do
+      options[:speed] = "fast"
+    end
+    
+    opts.on('-s', 'Do it slowly') do
+      options[:speed] = "slow"
+    end
+    
+    opts.on('-o', '--oneline', 'Display text on one line, along with anything before or after') do
+      options[:oneline] = true
     end
     
     opts.on('-v', '--version', 'Display version number and exit') do
@@ -45,6 +53,7 @@ begin
 
   if (ARGV.count > 0)
     options[:phrase] = ARGV[0]
+    puts ARGV
     Matrext::Base.new(options)
   else
     puts "#{$PROGRAM_NAME} error: missing phrase"
