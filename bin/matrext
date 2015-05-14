@@ -53,7 +53,6 @@ begin
 
   if (ARGV.count > 0)
     options[:phrase] = ARGV[0]
-    puts ARGV
     Matrext::Base.new(options)
   else
     puts "#{$PROGRAM_NAME} error: missing phrase"

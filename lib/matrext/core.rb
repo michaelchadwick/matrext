@@ -1,8 +1,6 @@
 # lib/matrext/core.rb
 # The core processing unit
 
-require 'date'
-
 module Matrext
   CHAR_POOL = (33..126).map{ |i| i.chr }
   NOISE_MIN_DEFAULT = 3
@@ -13,24 +11,18 @@ module Matrext
   def self.process(options)
     letters = options[:phrase]
 
-    start = DateTime.now
-    puts "options[:speed] = #{options[:speed]}"
     case options[:speed]
     when "fast"
-      puts "going fast: #{start}"
-      puts 
-      noise_min = 1
+      noise_min = 2
       noise_max = 3
-      delay_min = 0.001
+      delay_min = 0.005
       delay_max = 0.010
     when "slow"
-      puts "going slow: #{start}"
       noise_min = 5
       noise_max = 7
       delay_min = 0.015
       delay_max = 0.065
     else
-      puts "going normal: #{start}"
       noise_min = NOISE_MIN_DEFAULT
       noise_max = NOISE_MIN_DEFAULT
       delay_min = DELAY_MIN_DEFAULT
@@ -53,10 +45,5 @@ module Matrext
     if options[:oneline].equal? false
       puts
     end
-    
-    stop = DateTime.now
-    puts "\nstopped: #{stop}"
-    duration = ((stop - start) * 24 * 60 * 60 * 1000).to_i
-    puts "#{duration} ms"
   end
 end
