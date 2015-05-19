@@ -1,27 +1,38 @@
 # lib/matrext/core.rb
 # The core processing unit
 
+require 'pry'
+
 module Matrext
   CHAR_POOL = (33..126).map{ |i| i.chr }
-  NOISE_MIN_DEFAULT = 3
-  NOISE_MAX_DEFAULT = 5
-  DELAY_MIN_DEFAULT = 0.01
-  DELAY_MAX_DEFAULT = 0.04
+  NOISE_MIN_DEFAULT = 4
+  NOISE_MAX_DEFAULT = 6
+  DELAY_MIN_DEFAULT = 0.009
+  DELAY_MAX_DEFAULT = 0.012
   
   def self.process(options)
     letters = options[:phrase]
 
-    case options[:speed]
-    when "fast"
+    unless options[:speed].nil?
+      speed = options[:speed].to_sym
+    end
+
+    case speed
+    when :insane
+      noise_min = 1
+      noise_max = 2
+      delay_min = 0.0005
+      delay_max = 0.0015
+    when :fast
       noise_min = 2
-      noise_max = 3
-      delay_min = 0.005
-      delay_max = 0.010
-    when "slow"
+      noise_max = 4
+      delay_min = 0.003
+      delay_max = 0.005
+    when :slow
       noise_min = 5
       noise_max = 7
-      delay_min = 0.015
-      delay_max = 0.065
+      delay_min = 0.03
+      delay_max = 0.05
     else
       noise_min = NOISE_MIN_DEFAULT
       noise_max = NOISE_MIN_DEFAULT

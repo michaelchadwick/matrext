@@ -1,21 +1,18 @@
 #!/usr/bin/env ruby
 
 require 'optparse'
+
 require_relative '../lib/matrext'
 require_relative '../lib/matrext/version'
 
 def parse_options
-  options = {:speed => nil, :oneline => false}
+  options = {:oneline => false, :speed => nil}
 
   optparse = OptionParser.new do |opts|
-    opts.banner = 'usage: matrext "phrase" [-q] [-s] [-o]'
+    opts.banner = 'usage: matrext "phrase" [-o] [-s insane|fast|slow]'
 
-    opts.on('-q', 'Do it quickly') do
-      options[:speed] = "fast"
-    end
-    
-    opts.on('-s', 'Do it slowly') do
-      options[:speed] = "slow"
+    opts.on('-s', '--speed SPEED', 'Speed at which the text decodes') do |speed|
+      options[:speed] = speed
     end
     
     opts.on('-o', '--oneline', 'Display text on one line, along with anything before or after') do
