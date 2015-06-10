@@ -77,8 +77,8 @@ module Matrext
     chars = []
 
     chars = chars | alpha_chars if options[:alpha]
-    chars = chars | numeric_chars if options.[:numeric]
-    chars = chars | random_chars if options.[:random]
+    chars = chars | numeric_chars if options[:numeric]
+    chars = chars | random_chars if options[:random]
     
     return chars
   end
