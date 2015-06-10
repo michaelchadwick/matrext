@@ -84,6 +84,10 @@ module Matrext
   end
   
   def self.get_random_letter(chars)
+    if chars.length <= 0
+      chars = ['X']
+    end
+    
     chars[rand(0..chars.length-1)]
   end
 end
