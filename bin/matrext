@@ -1,15 +1,16 @@
 #!/usr/bin/env ruby
 
 require 'optparse'
+require 'pry'
 
 require_relative '../lib/matrext'
 require_relative '../lib/matrext/version'
 
 def parse_options
-  options = {:oneline => false, :speed => nil}
+  options = {:oneline => false, :speed => nil, :alpha => true, :numeric => true, :random => true}
 
   optparse = OptionParser.new do |opts|
-    opts.banner = 'usage: matrext "phrase" [-o] [-s insane|fast|slow]'
+    opts.banner = 'usage: matrext "phrase" [-o] [-s insane|fast|slow] [-a true|false] [-n true|false] [-r true|false]'
 
     opts.on('-s', '--speed SPEED', 'Speed at which the text decodes') do |speed|
       options[:speed] = speed
@@ -17,6 +18,27 @@ def parse_options
     
     opts.on('-o', '--oneline', 'Display text on one line, along with anything before or after') do
       options[:oneline] = true
+    end
+    
+    opts.on('-a', '--alpha BOOLEAN', 'Whether to include alphabetical characters') do |alpha|
+      case alpha
+      when 'false', 'f'
+        options[:alpha] = false
+      end
+    end
+    
+    opts.on('-n', '--numeric BOOLEAN', 'Whether to include numeric characters') do |numeric|
+      case numeric
+      when 'false', 'f'
+        options[:numeric] = false
+      end
+    end
+    
+    opts.on('-r', '--random BOOLEAN', 'Whether to include non-alphanumeric random characters') do |random|
+      case random
+      when 'false', 'f'
+        options[:random] = false
+      end
     end
     
     opts.on('-v', '--version', 'Display version number and exit') do
