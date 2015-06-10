@@ -9,7 +9,7 @@ module Matrext
   
   attr_accessor :alpha_chars, :numeric_chars, :random_chars
 
-  def self.process(options = {:oneline => false, :alpha => true, :numeric => true, :random => true})
+  def self.process(options)
     character_pool = self.create_character_pool(options)
 
     letters = options[:phrase]
@@ -76,9 +76,9 @@ module Matrext
   def self.create_character_pool(options)
     chars = []
 
-    chars = chars | alpha_chars if options.fetch(:alpha)
-    chars = chars | numeric_chars if options.fetch(:numeric)
-    chars = chars | random_chars if options.fetch(:random)
+    chars = chars | alpha_chars if options[:alpha]
+    chars = chars | numeric_chars if options.[:numeric]
+    chars = chars | random_chars if options.[:random]
     
     return chars
   end
