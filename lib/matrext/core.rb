@@ -9,7 +9,7 @@ module Matrext
   
   attr_accessor :alpha_chars, :numeric_chars, :random_chars
 
-  def self.process(options)
+  def self.process(options = {:oneline => false, :alpha => true, :numeric => true, :random => true})
     character_pool = self.create_character_pool(options)
 
     letters = options[:phrase]
