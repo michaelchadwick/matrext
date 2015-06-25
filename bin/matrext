@@ -6,6 +6,8 @@ require 'pry'
 require_relative '../lib/matrext'
 require_relative '../lib/matrext/version'
 
+BINARY_NAME = $PROGRAM_NAME.split('/').last
+
 def parse_options
   options = {:oneline => false, :speed => nil, :alpha => true, :numeric => true, :random => true}
 
@@ -42,7 +44,7 @@ def parse_options
     end
     
     opts.on('-v', '--version', 'Display version number and exit') do
-      puts "#{$PROGRAM_NAME} #{Matrext::VERSION}"
+      puts "#{BINARY_NAME} #{Matrext::VERSION}"
       exit
     end
 
@@ -60,9 +62,9 @@ end
 def print_error(error)
   case error
   when OptionParser::InvalidOption
-    puts "#{$PROGRAM_NAME}: illegal option #{error.args.join(' ')}"
+    puts "#{BINARY_NAME}: illegal option #{error.args.join(' ')}"
   else
-    puts "An unexpected error occurred while running #{$PROGRAM_NAME}:"
+    puts "An unexpected error occurred while running #{BINARY_NAME}:"
     puts "  #{error}\n"
   end
 end
@@ -74,7 +76,7 @@ begin
     options[:phrase] = ARGV[0]
     Matrext::Base.new(options)
   else
-    puts "#{$PROGRAM_NAME} error: missing phrase"
+    puts "#{BINARY_NAME} error: missing phrase"
   end
 rescue => error
   print_error(error)
