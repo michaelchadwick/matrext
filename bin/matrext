@@ -1,7 +1,6 @@
 #!/usr/bin/env ruby
 
 require 'optparse'
-
 require_relative '../lib/matrext'
 require_relative '../lib/matrext/version'
 
@@ -19,7 +18,8 @@ def parse_options
   }
 
   optparse = OptionParser.new do |opts|
-    opts.banner = 'usage: matrext "phrase" [-o] [-s insane|fast|slow] [-a true|false] [-n true|false] [-r true|false] [-c color_symbol] [-b background_symbol]'
+    opts.banner = 'Display text like it\'s being decoded, Matrix-style'
+    opts.banner = 'usage: matrext PHRASE [-o] [-s insane|fast|slow] [-a true|false] [-n true|false] [-r true|false] [-c color_symbol] [-b background_symbol]'
 
     opts.on('-s', '--speed SPEED', 'Speed at which the text decodes') do |speed|
       options[:speed] = speed
@@ -59,11 +59,11 @@ def parse_options
     end
 
     opts.on('-v', '--version', 'Display version number and exit') do
-      puts "#{BINARY_NAME} #{Matrext::VERSION}"
+      puts "#{Matrext::VERSION}"
       exit
     end
 
-    opts.on('-h', '--help', 'Display this screen and exit') do
+    opts.on('-h', '-?', '--help', 'Display this screen and exit') do
       puts opts
       exit
     end
@@ -77,10 +77,9 @@ end
 def print_error(error)
   case error
   when OptionParser::InvalidOption
-    puts "#{BINARY_NAME}: illegal option #{error.args.join(' ')}"
+    puts "#{BINARY_NAME} ERROR: illegal option #{error.args.join(' ')}"
   else
-    puts "An unexpected error occurred while running #{BINARY_NAME}:"
-    puts "  #{error}\n"
+    puts "#{BINARY_NAME} ERROR: #{error}"
   end
 end
 
@@ -88,10 +87,10 @@ begin
   options = parse_options
 
   if (ARGV.count > 0)
-    options[:phrase] = ARGV[0]
+    options[:phrase] = ARGV.join(" ")
     Matrext::Base.new(options)
   else
-    puts "#{BINARY_NAME} error: missing phrase"
+    puts "#{BINARY_NAME} ERROR: missing phrase"
   end
 rescue => error
   print_error(error)
