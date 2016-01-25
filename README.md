@@ -2,6 +2,8 @@
 
 [![Gem Version](https://badge.fury.io/rb/matrext.svg)](http://badge.fury.io/rb/matrext)
 
+![Matrext example](https://github.com/michaelchadwick/matrext/blob/master/matrext-example.gif)
+
 A simple Ruby gem that takes a phrase and writes it back to the screen, one letter a time, as if each character was being "decoded", Matrix-style.
 
 ## Usage
