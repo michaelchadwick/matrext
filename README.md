@@ -8,7 +8,7 @@ A simple Ruby gem that takes a phrase and writes it back to the screen, one lett
 
 ## Usage
 
-```
+```shell
 # default foreground color on background color
 $ matrext "hello world"
 
@@ -21,7 +21,7 @@ $ matrext -c white -b blue -s insane "hello world this is your computer speaking
 
 ## Contributing
 
-Bug reports and pull requests are welcome on GitHub at https://github.com/michaelchadwick/matrext.
+Bug reports and pull requests are welcome on GitHub at [https://github.com/michaelchadwick/matrext](https://github.com/michaelchadwick/matrext).
 
 ## License
 
